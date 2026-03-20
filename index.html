@@ -8,109 +8,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600&family=DM+Serif+Display&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #F5F3EF;
-    --surface: #FFFFFF;
-    --surface2: #F9F8F6;
-    --border: #E8E4DC;
-    --text-primary: #1A1814;
-    --text-secondary: #6B6560;
-    --text-muted: #A8A29C;
-    --accent: #C4783A;
-    --accent-light: #F5EBE0;
-    --green: #4A7C59;
-    --green-light: #EBF3EE;
-    --red: #B85450;
-    --red-light: #FAF0EF;
-    --blue: #3A6B8C;
-    --blue-light: #EBF2F7;
-    --yellow: #8C7A3A;
-    --yellow-light: #F7F3E8;
-    --radius: 12px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    --bg: #F5F3EF; --surface: #FFFFFF; --surface2: #F9F8F6; --border: #E8E4DC;
+    --text-primary: #1A1814; --text-secondary: #6B6560; --text-muted: #A8A29C;
+    --accent: #C4783A; --accent-light: #F5EBE0;
+    --green: #4A7C59; --green-light: #EBF3EE;
+    --red: #B85450; --red-light: #FAF0EF;
+    --blue: #3A6B8C; --blue-light: #EBF2F7;
+    --yellow: #8C7A3A; --yellow-light: #F7F3E8;
+    --radius: 12px; --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
     --scroll-h: 190px;
   }
+  body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; padding: 24px 32px 40px; font-size: 13px; }
+  ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
-  body {
-    font-family: 'Noto Sans TC', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding: 24px 32px 40px;
-    font-size: 13px;
-  }
+  /* HEADER */
+  .header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
+  .header-left h1 { font-family: 'DM Serif Display', serif; font-size: 26px; letter-spacing: 0.01em; }
+  .header-left .subtitle { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+  .date-display { font-family: 'DM Serif Display', serif; font-size: 22px; text-align: right; }
+  .time-display { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); margin-top: 2px; text-align: right; }
 
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 4px; height: 4px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-
-  /* ── HEADER ── */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 24px;
-  }
-  .header-left h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 26px;
-    letter-spacing: 0.01em;
-  }
-  .header-left .subtitle { color: var(--text-muted); font-size: 12px; margin-top: 2px; letter-spacing: 0.05em; }
-  .header-right { text-align: right; }
-  .date-display { font-family: 'DM Serif Display', serif; font-size: 22px; }
-  .time-display { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-
-  /* ── GRID ── */
+  /* GRID */
   .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
 
-  /* ── CARDS ── */
-  .card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    animation: fadeUp 0.4s ease both;
-    min-width: 0;
-  }
-  .card:nth-child(1){animation-delay:.04s} .card:nth-child(2){animation-delay:.08s}
-  .card:nth-child(3){animation-delay:.12s} .card:nth-child(4){animation-delay:.16s}
-  .card:nth-child(5){animation-delay:.20s} .card:nth-child(6){animation-delay:.24s}
-  .card:nth-child(7){animation-delay:.28s} .card:nth-child(8){animation-delay:.32s}
+  /* CARDS */
+  .card { background: var(--surface); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); border: 1px solid var(--border); animation: fadeUp 0.4s ease both; min-width: 0; }
+  .card:nth-child(1){animation-delay:.04s}.card:nth-child(2){animation-delay:.08s}.card:nth-child(3){animation-delay:.12s}.card:nth-child(4){animation-delay:.16s}.card:nth-child(5){animation-delay:.20s}.card:nth-child(6){animation-delay:.24s}.card:nth-child(7){animation-delay:.28s}.card:nth-child(8){animation-delay:.32s}
   @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-
-  .card-header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 14px; flex-shrink: 0;
-  }
-  .card-title {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--text-muted);
-  }
-  .card-badge {
-    font-size: 10px; font-family: 'DM Mono', monospace;
-    padding: 2px 8px; border-radius: 20px;
-  }
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-shrink: 0; }
+  .card-title { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+  .card-badge { font-size: 10px; font-family: 'DM Mono', monospace; padding: 2px 8px; border-radius: 20px; }
   .card-actions { display: flex; gap: 6px; align-items: center; }
+  .card-body { overflow-y: auto; max-height: var(--scroll-h); scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
 
-  /* scrollable body inside each card */
-  .card-body {
-    overflow-y: auto;
-    max-height: var(--scroll-h);
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
-  }
-
-  /* ── WEATHER ── */
-  .weather-card {
-    grid-column: 1; grid-row: 1;
-    background: linear-gradient(135deg, #3A6B8C 0%, #2d5470 100%);
-    color: white; border: none;
-  }
+  /* WEATHER */
+  .weather-card { grid-column: 1; grid-row: 1; background: linear-gradient(135deg, #3A6B8C 0%, #2d5470 100%); color: white; border: none; }
   .weather-card .card-title { color: rgba(255,255,255,0.55); }
   .weather-main { display: flex; align-items: flex-end; gap: 10px; margin-bottom: 10px; }
   .weather-temp { font-family: 'DM Serif Display', serif; font-size: 52px; line-height: 1; }
@@ -121,184 +54,133 @@
   .weather-detail-item { font-size: 10px; color: rgba(255,255,255,0.6); }
   .weather-detail-item span { color: white; font-weight: 500; }
 
-  /* ── TODAY FOCUS ── */
+  /* FOCUS */
   .focus-card { grid-column: 2 / 4; grid-row: 1; }
   .focus-label { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 5px; }
-  .focus-input {
-    width: 100%; border: none; outline: none;
-    font-family: 'DM Serif Display', serif; font-size: 18px;
-    color: var(--text-primary); background: transparent; min-height: 28px;
-  }
+  .focus-input { width: 100%; border: none; outline: none; font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--text-primary); background: transparent; min-height: 28px; }
   .focus-input:empty:before { content: attr(placeholder); color: var(--text-muted); }
   .focus-divider { height: 1px; background: var(--border); margin: 12px 0; }
 
-  /* ── TASK ITEMS (shared) ── */
-  .task-item {
-    display: flex; align-items: center; gap: 8px;
-    padding: 7px 8px; border-radius: 7px; background: var(--surface2);
-    margin-bottom: 5px; cursor: pointer; transition: background 0.15s;
-  }
+  /* TASK ITEMS (shared) */
+  .task-item { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-radius: 7px; background: var(--surface2); margin-bottom: 5px; cursor: pointer; transition: background 0.15s; }
   .task-item:last-child { margin-bottom: 0; }
   .task-item:hover { background: var(--border); }
   .task-item.done { opacity: 0.38; }
   .task-item.done .task-text { text-decoration: line-through; }
-  .task-circle {
-    width: 15px; height: 15px; border-radius: 50%;
-    border: 1.5px solid var(--border); flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-  }
+  .task-circle { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
   .task-item.done .task-circle { background: var(--green); border-color: var(--green); }
   .check-icon { font-size: 8px; color: white; }
   .task-text { font-size: 12px; flex: 1; line-height: 1.4; }
   .task-link { font-size: 10px; color: var(--text-muted); text-decoration: none; flex-shrink: 0; padding: 2px 3px; border-radius: 3px; }
-  .task-link:hover { background: var(--border); color: var(--text-secondary); }
-  .task-tag { font-size: 9px; padding: 1px 6px; border-radius: 20px; font-weight: 500; flex-shrink: 0; white-space: nowrap; }
-  .tag-main   { background: var(--accent-light); color: var(--accent); }
-  .tag-side   { background: var(--blue-light); color: var(--blue); }
-  .tag-urgent { background: var(--red-light); color: var(--red); }
+  .task-link:hover { background: var(--border); }
 
-  /* ── NOTION PROJECTS ── */
+  /* PRIORITY TAGS */
+  .task-tag { font-size: 9px; padding: 1px 6px; border-radius: 20px; font-weight: 500; flex-shrink: 0; white-space: nowrap; }
+  .tag-p1 { background: var(--red-light); color: var(--red); }        /* 重要且緊急 */
+  .tag-p2 { background: var(--accent-light); color: var(--accent); }   /* 重要不緊急 */
+  .tag-p3 { background: var(--blue-light); color: var(--blue); }       /* 不重要但緊急 */
+  .tag-p4 { background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border); } /* 不重要不緊急 */
+
+  /* NOTION PROJECTS */
   .notion-projects-card { grid-column: 1 / 3; grid-row: 2; }
-  .project-row {
-    display: flex; align-items: center; gap: 10px;
-    padding: 8px 0; border-bottom: 1px solid var(--border);
-  }
+  .project-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
   .project-row:last-child { border-bottom: none; }
   .project-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .project-name { font-size: 12px; font-weight: 500; flex: 1; color: var(--text-primary); text-decoration: none; }
-  .project-name:hover { color: var(--accent); }
+  .project-name-link { font-size: 12px; font-weight: 500; flex: 1; color: var(--text-primary); text-decoration: none; }
+  .project-name-link:hover { color: var(--accent); }
   .project-end { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--text-muted); flex-shrink: 0; }
   .project-end.soon { color: var(--accent); }
   .project-end.overdue { color: var(--red); }
 
-  /* ── WEEK TASKS ── */
+  /* WEEK TASKS */
   .week-card { grid-column: 3; grid-row: 2; }
-  .week-item {
-    display: flex; align-items: flex-start; gap: 7px;
-    padding: 7px 0; border-bottom: 1px solid var(--border);
-  }
-  .week-item:last-child { border-bottom: none; }
-  .week-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 6px; }
-  .week-dot.urgent { background: var(--red); }
-  .week-dot.side { background: var(--blue); }
-  .week-item-name { font-size: 11px; flex: 1; line-height: 1.5; color: var(--text-secondary); }
-  .week-item-due { font-size: 9px; font-family: 'DM Mono', monospace; color: var(--text-muted); margin-top: 2px; }
+  .week-item { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-radius: 7px; background: var(--surface2); margin-bottom: 5px; cursor: pointer; transition: background 0.15s; }
+  .week-item:last-child { margin-bottom: 0; }
+  .week-item:hover { background: var(--border); }
+  .week-item.done { opacity: 0.38; }
+  .week-item.done .week-text { text-decoration: line-through; }
+  .week-checkbox { width: 13px; height: 13px; border-radius: 3px; border: 1.5px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .week-item.done .week-checkbox { background: var(--green); border-color: var(--green); }
+  .week-text { font-size: 11px; flex: 1; line-height: 1.4; color: var(--text-secondary); }
+  .week-due { font-size: 9px; font-family: 'DM Mono', monospace; color: var(--text-muted); flex-shrink: 0; }
 
-  /* ── ASANA TASKS ── */
+  /* ASANA TASKS */
   .asana-card { grid-column: 1 / 3; grid-row: 3; }
-  .asana-connect {
-    background: var(--accent-light); border-radius: 8px;
-    padding: 10px 14px; font-size: 11px; color: var(--accent);
-    display: flex; align-items: center; gap: 8px;
-  }
+  .asana-connect { background: var(--accent-light); border-radius: 8px; padding: 10px 14px; font-size: 11px; color: var(--accent); display: flex; align-items: center; gap: 8px; }
   .asana-connect a { color: var(--accent); font-weight: 600; text-decoration: underline; cursor: pointer; }
-  .asana-section-label {
-    font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-muted); margin: 10px 0 6px;
-  }
+  .asana-section-label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin: 10px 0 6px; }
   .asana-section-label:first-child { margin-top: 0; }
+  .asana-proj-label { font-size: 10px; font-weight: 600; color: var(--text-secondary); margin-bottom: 5px; padding-left: 2px; }
   .asana-project-group { margin-bottom: 10px; }
   .asana-project-group:last-child { margin-bottom: 0; }
-  .asana-proj-label {
-    font-size: 10px; font-weight: 600; color: var(--text-secondary);
-    margin-bottom: 5px; padding-left: 2px;
-  }
-  .asana-task {
-    display: flex; align-items: center; gap: 8px;
-    padding: 7px 10px; border-radius: 7px; border: 1px solid var(--border);
-    margin-bottom: 4px; transition: border-color 0.15s;
-  }
+  .asana-task { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 7px; border: 1px solid var(--border); margin-bottom: 4px; transition: border-color 0.15s; }
   .asana-task:last-child { margin-bottom: 0; }
   .asana-task:hover { border-color: var(--text-muted); }
   .asana-task.overdue { border-color: #e8b4b2; background: var(--red-light); }
   .asana-task.due-today { border-color: #d4b896; background: var(--accent-light); }
   .status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-  .dot-overdue { background: var(--red); }
-  .dot-today { background: var(--accent); }
+  .dot-overdue { background: var(--red); } .dot-today { background: var(--accent); }
   .asana-task-name { font-size: 11px; flex: 1; }
-  .asana-task-assignee { font-size: 10px; color: var(--text-muted); font-family: 'DM Mono', monospace; flex-shrink: 0; }
+  .asana-task-tags { display: flex; gap: 4px; flex-wrap: wrap; flex-shrink: 0; }
+  .asana-tag { font-size: 9px; padding: 1px 6px; border-radius: 20px; font-weight: 500; background: var(--green-light); color: var(--green); }
   .asana-task-due { font-size: 9px; font-family: 'DM Mono', monospace; padding: 1px 6px; border-radius: 20px; flex-shrink: 0; }
   .due-overdue { background: var(--red-light); color: var(--red); }
   .due-today { background: var(--accent-light); color: var(--accent); }
   .asana-tip { font-size: 10px; color: var(--text-muted); margin-top: 10px; }
 
-  /* ── ASANA PROGRESS ── */
+  /* ASANA PROGRESS */
   .asana-progress-card { grid-column: 3; grid-row: 3; }
-  .asana-progress-card.not-connected .card-body {
-    display: flex; align-items: center; justify-content: center;
-  }
   .progress-item { padding: 9px 0; border-bottom: 1px solid var(--border); }
   .progress-item:last-child { border-bottom: none; }
-  .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
-  .progress-name { font-size: 11px; font-weight: 500; color: var(--text-primary); flex: 1; margin-right: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+  .progress-name { font-size: 11px; font-weight: 500; flex: 1; margin-right: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .progress-pct { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--text-muted); flex-shrink: 0; }
   .progress-sub { font-size: 9px; color: var(--text-muted); margin-bottom: 5px; }
   .progress-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
-  .progress-bar-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width 0.5s ease; }
+  .progress-bar-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width 0.5s; }
   .progress-bar-fill.high { background: var(--green); }
   .progress-bar-fill.low { background: var(--text-muted); }
 
-  /* ── BUDGET ── */
+  /* BUDGET */
   .budget-card { grid-column: 1 / 3; grid-row: 4; }
   .budget-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .budget-item { background: var(--surface2); border-radius: 8px; padding: 11px 13px; }
-  .budget-project-name { font-size: 10px; color: var(--text-muted); margin-bottom: 7px; font-weight: 600; letter-spacing: 0.04em; }
+  .budget-project-name { font-size: 10px; color: var(--text-muted); margin-bottom: 7px; font-weight: 600; }
   .budget-row { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 2px; }
   .budget-label { color: var(--text-muted); }
   .budget-value { font-family: 'DM Mono', monospace; font-weight: 500; }
-  .budget-value.over { color: var(--red); }
-  .budget-value.ok { color: var(--green); }
-  .budget-value.warn { color: var(--accent); }
+  .budget-value.over { color: var(--red); } .budget-value.ok { color: var(--green); } .budget-value.warn { color: var(--accent); }
   .budget-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 7px; overflow: hidden; }
   .budget-bar-fill { height: 100%; border-radius: 2px; background: var(--green); transition: width 0.4s; }
-  .budget-bar-fill.warn { background: var(--accent); }
-  .budget-bar-fill.over { background: var(--red); }
+  .budget-bar-fill.warn { background: var(--accent); } .budget-bar-fill.over { background: var(--red); }
   .budget-note { font-size: 9px; color: var(--text-muted); margin-top: 5px; }
-  .budget-not-configured {
-    font-size: 11px; color: var(--text-muted); text-align: center;
-    padding: 20px; line-height: 1.8;
-  }
+  .budget-not-configured { font-size: 11px; color: var(--text-muted); text-align: center; padding: 20px; line-height: 1.8; }
 
-  /* ── 叩叩旅遊 ── */
+  /* 叩叩旅遊 */
   .side-card { grid-column: 3; grid-row: 4; border-left: 3px solid var(--blue); }
   .side-card .card-title { color: var(--blue); }
-  .side-item {
-    display: flex; gap: 8px; padding: 7px 0;
-    border-bottom: 1px solid var(--border); align-items: flex-start;
-    cursor: pointer;
-  }
+  .side-item { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); align-items: flex-start; cursor: pointer; }
   .side-item:last-child { border-bottom: none; }
-  .side-checkbox {
-    width: 13px; height: 13px; border: 1.5px solid var(--border);
-    border-radius: 3px; flex-shrink: 0; margin-top: 2px;
-    display: flex; align-items: center; justify-content: center; transition: all 0.15s;
-  }
+  .side-checkbox { width: 13px; height: 13px; border: 1.5px solid var(--border); border-radius: 3px; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
   .side-item.done .side-checkbox { background: var(--blue); border-color: var(--blue); }
   .side-item.done .side-text { text-decoration: line-through; opacity: 0.42; }
   .side-text { font-size: 11px; flex: 1; line-height: 1.5; }
   .side-due { font-size: 9px; color: var(--text-muted); font-family: 'DM Mono', monospace; margin-top: 2px; }
   .side-open { font-size: 10px; color: var(--blue); text-decoration: none; flex-shrink: 0; }
-  .side-open:hover { text-decoration: underline; }
 
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.28); z-index: 100;
-    align-items: center; justify-content: center; backdrop-filter: blur(3px);
-  }
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.28); z-index: 100; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
   .modal-overlay.open { display: flex; }
   .modal { background: white; border-radius: var(--radius); padding: 28px; width: 480px; max-width: 90vw; box-shadow: 0 24px 60px rgba(0,0,0,0.14); }
   .modal h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
   .modal p { font-size: 12px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.7; }
   .modal ol { font-size: 12px; color: var(--text-secondary); padding-left: 18px; line-height: 2.1; margin-bottom: 16px; }
   .modal-close { float: right; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--text-muted); }
-  .modal-input { flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px; font-size: 12px; font-family: 'DM Mono', monospace; outline: none; background: white; }
+  .modal-input { flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px; font-size: 12px; font-family: 'DM Mono', monospace; outline: none; }
   .modal-input:focus { border-color: var(--accent); }
   .modal-btn { padding: 7px 16px; background: var(--text-primary); color: white; border: none; border-radius: 8px; font-size: 12px; cursor: pointer; }
-  .modal-btn:hover { opacity: 0.8; }
 
-  /* ── MISC ── */
+  /* MISC */
   .refresh-btn { font-size: 9px; padding: 2px 7px; border: 1px solid var(--border); border-radius: 20px; background: none; cursor: pointer; color: var(--text-muted); transition: all 0.15s; }
   .refresh-btn:hover { border-color: var(--accent); color: var(--accent); }
   .set-api-btn { font-size: 9px; padding: 2px 7px; border: 1px solid var(--border); border-radius: 20px; background: none; cursor: pointer; color: var(--text-muted); }
@@ -312,7 +194,7 @@
 <div class="header">
   <div class="header-left">
     <h1>指揮中心</h1>
-    <div class="subtitle">厝味旅宿 · PM Workspace</div>
+    <div class="subtitle">厝味旅宿 · PM Workspace · <span style="color:var(--accent);font-weight:600;">v2.1</span></div>
   </div>
   <div class="header-right">
     <div class="date-display" id="date-display">—</div>
@@ -322,8 +204,7 @@
 
 <div class="grid">
 
-  <!-- ═══ ROW 1：天氣 + 今日聚焦 ═══ -->
-
+  <!-- ROW 1 -->
   <div class="card weather-card">
     <div class="card-header"><div class="card-title">天氣</div></div>
     <div class="weather-main">
@@ -344,7 +225,7 @@
       <div class="card-title">今日聚焦</div>
       <div class="card-actions">
         <div class="card-badge" style="background:var(--accent-light);color:var(--accent);" id="task-count">— / —</div>
-        <button class="refresh-btn" onclick="loadNotionTasks()">↻ 重新整理</button>
+        <button class="refresh-btn" onclick="loadNotionTasks()" title="重新整理 Notion 任務（今日聚焦、本週待辦、叩叩旅遊）">↻ 重新整理</button>
       </div>
     </div>
     <div class="focus-label">今天最重要的一件事</div>
@@ -355,8 +236,7 @@
     </div>
   </div>
 
-  <!-- ═══ ROW 2：Notion 進行中專案 + 本週待辦 ═══ -->
-
+  <!-- ROW 2 -->
   <div class="card notion-projects-card">
     <div class="card-header">
       <div class="card-title">進行中專案</div>
@@ -373,15 +253,17 @@
   <div class="card week-card">
     <div class="card-header">
       <div class="card-title">本週待辦</div>
-      <div class="card-badge" style="background:var(--surface2);color:var(--text-muted);" id="week-count">0 項</div>
+      <div class="card-actions">
+        <div class="card-badge" style="background:var(--surface2);color:var(--text-muted);" id="week-count">0 項</div>
+        <button class="refresh-btn" onclick="loadNotionTasks()">↻ 重新整理</button>
+      </div>
     </div>
     <div class="card-body" id="week-tasks">
       <div class="loading-msg">⏳ 載入中...</div>
     </div>
   </div>
 
-  <!-- ═══ ROW 3：Asana 今日任務 + Asana 進度條 ═══ -->
-
+  <!-- ROW 3 -->
   <div class="card asana-card">
     <div class="card-header">
       <div class="card-title">Asana · 公司任務</div>
@@ -392,27 +274,22 @@
       </div>
     </div>
     <div class="card-body" id="asana-content">
-      <div class="asana-connect">
-        ⚡ 尚未連接 Asana。<a onclick="openAsanaModal()">點此設定 API Token</a>，即可自動拉取任務。
-      </div>
+      <div class="asana-connect">⚡ 尚未連接 Asana。<a onclick="openAsanaModal()">點此設定 API Token</a></div>
       <div class="asana-tip">💡 Asana 右上角頭像 → My Settings → Apps → Manage Developer Apps → New token</div>
     </div>
   </div>
 
-  <div class="card asana-progress-card" id="asana-progress-card">
+  <div class="card asana-progress-card">
     <div class="card-header">
       <div class="card-title">任務進度條</div>
       <div class="card-badge" style="background:var(--surface2);color:var(--text-muted);" id="progress-count">—</div>
     </div>
     <div class="card-body" id="asana-progress-list">
-      <div class="asana-connect" style="font-size:10px;">
-        連接 Asana 後自動顯示各專案完成比例
-      </div>
+      <div class="asana-connect" style="font-size:10px;">連接 Asana 後自動顯示各專案完成比例</div>
     </div>
   </div>
 
-  <!-- ═══ ROW 4：預算花費 + 叩叩旅遊 ═══ -->
-
+  <!-- ROW 4 -->
   <div class="card budget-card">
     <div class="card-header">
       <div class="card-title">預算 / 花費摘要</div>
@@ -426,28 +303,31 @@
   <div class="card side-card">
     <div class="card-header">
       <div class="card-title">✈ 叩叩旅遊</div>
-      <div class="card-badge" style="background:var(--blue-light);color:var(--blue);" id="side-count">—</div>
+      <div class="card-actions">
+        <div class="card-badge" style="background:var(--blue-light);color:var(--blue);" id="side-count">—</div>
+        <button class="refresh-btn" onclick="loadNotionTasks()">↻ 重新整理</button>
+      </div>
     </div>
     <div class="card-body" id="side-list">
       <div class="loading-msg">⏳ 載入中...</div>
     </div>
   </div>
 
-</div><!-- end .grid -->
+</div>
 
-<!-- ── ASANA MODAL ── -->
+<!-- ASANA MODAL -->
 <div class="modal-overlay" id="api-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeAsanaModal()">×</button>
     <h3>連接 Asana API</h3>
-    <p>輸入你的 Personal Access Token，Token 只存在你的瀏覽器本機，不會傳送至第三方。</p>
+    <p>Token 只存在瀏覽器本機，不會傳送至第三方。</p>
     <ol>
       <li>登入 Asana → 右上角頭像 → My Settings</li>
       <li>Apps → Manage Developer Apps → New access token</li>
       <li>複製 token 後貼到下方</li>
     </ol>
     <div style="display:flex;gap:8px;margin-bottom:10px;">
-      <input id="asana-token-input" class="modal-input" placeholder="貼上 Personal Access Token..." />
+      <input id="asana-token-input" class="modal-input" placeholder="貼上 Personal Access Token..." style="flex:1;" />
       <button class="modal-btn" onclick="connectAsana()">連接</button>
     </div>
     <div id="asana-modal-status" style="font-size:11px;color:var(--text-muted);"></div>
@@ -455,82 +335,73 @@
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════
-// 工具函式
-// ══════════════════════════════════════════════════════
-function escHtml(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+// ── 工具 ──────────────────────────────────────────
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function todayStr() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function shortName(name) { const i = name.indexOf('|'); return i !== -1 ? name.slice(i+1) : name; }
+
+// 判斷是否為叩叩旅遊任務（名稱前綴優先，再檢查 project 關聯）
+function isSideTask(task) {
+  // 名稱前綴優先判斷（無論有無 project 關聯都檢查）
+  const n = task.name;
+  if (n.startsWith('叩叩 |') || n.startsWith('叩叩|') ||
+      n.startsWith('副業 |') || n.startsWith('副業|')) return true;
+  // 再用 project 關聯判斷
+  return !!(task.projectNames && task.projectNames.some(p => p.includes('叩叩')));
 }
 
-function daysUntil(dateStr) {
-  if (!dateStr) return null;
-  const diff = Math.ceil((new Date(dateStr) - new Date(todayStr())) / 86400000);
-  return diff;
+// 優先級 → tag HTML
+function priorityTag(priority) {
+  const map = {
+    '重要且緊急':   ['tag-p1', '緊急'],
+    '重要不緊急':   ['tag-p2', '重要'],
+    '不重要但緊急': ['tag-p3', '次要'],
+    '不重要不緊急': ['tag-p4', '一般'],
+  };
+  const [cls, label] = map[priority] || [];
+  return cls ? `<span class="task-tag ${cls}">${label}</span>` : '';
 }
 
-function todayStr() {
-  return new Date().toISOString().split('T')[0];
-}
+function daysUntil(d) { return d ? Math.ceil((new Date(d) - new Date(todayStr())) / 86400000) : null; }
+function endDateCls(d) { const n = daysUntil(d); return n === null ? '' : n < 0 ? 'overdue' : n <= 7 ? 'soon' : ''; }
 
-function endDateCls(dateStr) {
-  const d = daysUntil(dateStr);
-  if (d === null) return '';
-  if (d < 0) return 'overdue';
-  if (d <= 7) return 'soon';
-  return '';
-}
-
-function shortName(name) {
-  const idx = name.indexOf('|');
-  return idx !== -1 ? name.slice(idx + 1) : name;
-}
-
-function isSideTask(name) {
-  return name.startsWith('副業|') || name.startsWith('叩叩|');
-}
-
-// ── 時鐘 ────────────────────────────────────────────
+// ── 時鐘 ──────────────────────────────────────────
 function updateClock() {
-  const now = new Date();
-  const days = ['日','一','二','三','四','五','六'];
+  const now = new Date(), days = ['日','一','二','三','四','五','六'];
   const m = now.getMonth()+1, d = now.getDate();
   document.getElementById('date-display').textContent =
     `${now.getFullYear()} / ${String(m).padStart(2,'0')} / ${String(d).padStart(2,'0')}  週${days[now.getDay()]}`;
   document.getElementById('time-display').textContent =
     `${String(now.getHours()).padStart(2,'0')} : ${String(now.getMinutes()).padStart(2,'0')} : ${String(now.getSeconds()).padStart(2,'0')}`;
 }
-setInterval(updateClock, 1000);
-updateClock();
+setInterval(updateClock, 1000); updateClock();
 
-// ── 今日焦點（每日重置） ────────────────────────────
+// ── 今日焦點 ──────────────────────────────────────
 const focusKey = 'focus_text_' + new Date().toDateString();
 const focusEl = document.getElementById('focus-main');
 focusEl.textContent = localStorage.getItem(focusKey) || '';
 focusEl.addEventListener('input', () => localStorage.setItem(focusKey, focusEl.textContent));
 
-// ── 天氣 ────────────────────────────────────────────
+// ── 天氣 ──────────────────────────────────────────
 async function fetchWeather() {
   try {
     const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=25.04&longitude=121.53&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,weather_code&timezone=Asia/Taipei');
-    const d = (await r.json()).current;
-    document.getElementById('weather-temp').textContent = Math.round(d.temperature_2m);
-    document.getElementById('weather-humidity').textContent = d.relative_humidity_2m + '%';
-    document.getElementById('weather-feels').textContent = Math.round(d.apparent_temperature);
-    document.getElementById('weather-wind').textContent = Math.round(d.wind_speed_10m);
+    const c = (await r.json()).current;
+    document.getElementById('weather-temp').textContent = Math.round(c.temperature_2m);
+    document.getElementById('weather-humidity').textContent = c.relative_humidity_2m + '%';
+    document.getElementById('weather-feels').textContent = Math.round(c.apparent_temperature);
+    document.getElementById('weather-wind').textContent = Math.round(c.wind_speed_10m);
     const codes = {0:'晴朗',1:'大致晴朗',2:'部分多雲',3:'陰天',45:'有霧',51:'毛毛雨',61:'小雨',63:'中雨',65:'大雨',80:'陣雨',95:'雷雨'};
     let desc = '—';
-    for (const k of Object.keys(codes).map(Number).sort((a,b)=>b-a)) {
-      if (d.weather_code >= k) { desc = codes[k]; break; }
-    }
+    for (const k of Object.keys(codes).map(Number).sort((a,b)=>b-a)) { if (c.weather_code >= k) { desc = codes[k]; break; } }
     document.getElementById('weather-desc').textContent = desc;
   } catch { document.getElementById('weather-desc').textContent = '無法載入天氣'; }
 }
-fetchWeather();
-setInterval(fetchWeather, 600000);
+fetchWeather(); setInterval(fetchWeather, 600000);
 
-// ══════════════════════════════════════════════════════
-// NOTION：今日任務 + 本週待辦 + 叩叩旅遊
-// ══════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════
+// NOTION TASKS
+// ══════════════════════════════════════════════════
 let allTasks = [];
 
 async function loadNotionTasks() {
@@ -541,68 +412,59 @@ async function loadNotionTasks() {
     const r = await fetch('/api/notion-tasks');
     if (!r.ok) throw new Error(await r.text());
     allTasks = (await r.json()).tasks || [];
-    renderTodayTasks();
-    renderWeekTasks();
-    renderSideTasks();
+    renderTodayTasks(); renderWeekTasks(); renderSideTasks();
   } catch(e) {
-    const msg = `<div class="error-msg">⚠ ${escHtml(e.message)}</div>`;
-    ['today-tasks','week-tasks','side-list'].forEach(id =>
-      document.getElementById(id).innerHTML = msg
-    );
+    const msg = `<div class="error-msg">⚠ ${esc(e.message)}</div>`;
+    ['today-tasks','week-tasks','side-list'].forEach(id => document.getElementById(id).innerHTML = msg);
   }
 }
 
 function renderTodayTasks() {
-  const tasks = allTasks.filter(t => t.today);
+  // 今日聚焦：Today=true 且非叩叩任務
+  const tasks = allTasks.filter(t => t.today && !isSideTask(t));
   const done = tasks.filter(t => t.status === '完成').length;
   document.getElementById('task-count').textContent = `${done} / ${tasks.length}`;
   if (!tasks.length) {
-    document.getElementById('today-tasks').innerHTML =
-      '<div class="empty-msg">✓ 今日無標記任務<br><span style="font-size:9px;color:var(--text-muted);">在 Notion 中勾選 Today checkbox</span></div>';
+    document.getElementById('today-tasks').innerHTML = '<div class="empty-msg">✓ 今日無標記任務<br><span style="font-size:9px;">在 Notion 中勾選 Today checkbox</span></div>';
     return;
   }
-  document.getElementById('today-tasks').innerHTML = tasks.map(t => {
-    let tagHtml = '';
-    if (isSideTask(t.name)) tagHtml = '<span class="task-tag tag-side">副業</span>';
-    else if (t.priority === '重要且緊急') tagHtml = '<span class="task-tag tag-urgent">緊急</span>';
-    else tagHtml = '<span class="task-tag tag-main">本業</span>';
-    return `
+  document.getElementById('today-tasks').innerHTML = tasks.map(t => `
     <div class="task-item ${t.status==='完成'?'done':''}" data-id="${t.id}">
       <div class="task-circle" onclick="completeTask(event,'${t.id}')">
         ${t.status==='完成'?'<span class="check-icon">✓</span>':''}
       </div>
-      <span class="task-text">${escHtml(shortName(t.name))}</span>
-      ${tagHtml}
+      <span class="task-text">${esc(shortName(t.name))}</span>
+      ${priorityTag(t.priority)}
       ${t.dueDate?`<span style="font-size:9px;color:var(--text-muted);font-family:'DM Mono',monospace;">${t.dueDate.slice(5)}</span>`:''}
       <a class="task-link" href="${t.url}" target="_blank" onclick="event.stopPropagation()">↗</a>
-    </div>`;
-  }).join('');
+    </div>`).join('');
 }
 
 function renderWeekTasks() {
+  // 本週待辦：status=本週 且 today=false（含叩叩任務在內，都顯示）
   const tasks = allTasks.filter(t => t.status === '本週' && !t.today);
   document.getElementById('week-count').textContent = tasks.length + ' 項';
   if (!tasks.length) {
     document.getElementById('week-tasks').innerHTML = '<div class="empty-msg">✓ 本週無其他待辦</div>';
     return;
   }
-  document.getElementById('week-tasks').innerHTML = tasks.map(t => {
-    const dot = isSideTask(t.name) ? 'side' : (t.priority==='重要且緊急'?'urgent':'');
-    return `
-    <div class="week-item">
-      <div class="week-dot ${dot}"></div>
-      <div style="flex:1;">
-        <div class="week-item-name">${escHtml(shortName(t.name))}</div>
-        ${t.dueDate?`<div class="week-item-due">${t.dueDate}</div>`:''}
+  document.getElementById('week-tasks').innerHTML = tasks.map(t => `
+    <div class="week-item ${t.status==='完成'?'done':''}" data-id="${t.id}">
+      <div class="week-checkbox" onclick="completeTask(event,'${t.id}')">
+        ${t.status==='完成'?'<span class="check-icon">✓</span>':''}
       </div>
-      <a href="${t.url}" target="_blank" class="task-link">↗</a>
-    </div>`;
-  }).join('');
+      <span class="week-text">${esc(shortName(t.name))}</span>
+      ${priorityTag(t.priority)}
+      ${t.dueDate?`<span class="week-due">${t.dueDate.slice(5)}</span>`:''}
+      <a href="${t.url}" target="_blank" class="task-link" onclick="event.stopPropagation()">↗</a>
+    </div>`).join('');
 }
 
 function renderSideTasks() {
-  const tasks = allTasks.filter(t => isSideTask(t.name));
-  document.getElementById('side-count').textContent = tasks.filter(t=>t.status!=='完成').length + ' 件待辦';
+  // 叩叩旅遊：屬於叩叩相關 project 的任務（用 project 關聯判斷）
+  const tasks = allTasks.filter(t => isSideTask(t));
+  const pending = tasks.filter(t => t.status !== '完成').length;
+  document.getElementById('side-count').textContent = pending + ' 件待辦';
   if (!tasks.length) {
     document.getElementById('side-list').innerHTML = '<div class="empty-msg">✓ 無待辦任務</div>';
     return;
@@ -613,7 +475,7 @@ function renderSideTasks() {
         ${t.status==='完成'?'<span style="font-size:8px;color:white;">✓</span>':''}
       </div>
       <div style="flex:1;">
-        <div class="side-text">${escHtml(shortName(t.name))}</div>
+        <div class="side-text">${esc(shortName(t.name))}</div>
         ${t.dueDate?`<div class="side-due">${t.dueDate}</div>`:''}
       </div>
       <a class="side-open" href="${t.url}" target="_blank" onclick="event.stopPropagation()">↗</a>
@@ -626,9 +488,7 @@ async function completeTask(event, taskId) {
   if (el) el.style.opacity = '0.35';
   try {
     const r = await fetch('/api/notion-complete', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ taskId }),
+      method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({taskId})
     });
     if (!r.ok) throw new Error(await r.text());
     const t = allTasks.find(t => t.id === taskId);
@@ -640,9 +500,9 @@ async function completeTask(event, taskId) {
   }
 }
 
-// ══════════════════════════════════════════════════════
-// NOTION：進行中專案（名稱 + 到期日）
-// ══════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════
+// NOTION PROJECTS
+// ══════════════════════════════════════════════════
 async function loadNotionProjects() {
   document.getElementById('projects-list').innerHTML = '<div class="loading-msg">⏳ 載入中...</div>';
   try {
@@ -656,24 +516,22 @@ async function loadNotionProjects() {
     }
     document.getElementById('projects-list').innerHTML = projects.map(p => {
       const cls = endDateCls(p.endDate);
-      const dateLabel = p.endDate ? p.endDate.slice(0, 10) : '—';
-      const dLeft = daysUntil(p.endDate);
-      const dText = dLeft === null ? '' : dLeft < 0 ? `（逾期 ${-dLeft} 天）` : dLeft === 0 ? '（今日截止）' : dLeft <= 7 ? `（${dLeft} 天後）` : '';
-      return `
-      <div class="project-row">
+      const d = daysUntil(p.endDate);
+      const hint = d === null ? '' : d < 0 ? `（逾期 ${-d} 天）` : d === 0 ? '（今日截止）' : d <= 7 ? `（${d} 天後）` : '';
+      return `<div class="project-row">
         <div class="project-dot"></div>
-        <a class="project-name" href="${p.url}" target="_blank">${escHtml(p.name)}</a>
-        <div class="project-end ${cls}">${dateLabel}<span style="font-size:9px;margin-left:3px;">${dText}</span></div>
+        <a class="project-name-link" href="${p.url}" target="_blank">${esc(p.name)}</a>
+        <div class="project-end ${cls}">${p.endDate?p.endDate.slice(0,10):'—'}<span style="font-size:9px;margin-left:3px;opacity:.7;">${hint}</span></div>
       </div>`;
     }).join('');
   } catch(e) {
-    document.getElementById('projects-list').innerHTML = `<div class="error-msg">⚠ ${escHtml(e.message)}</div>`;
+    document.getElementById('projects-list').innerHTML = `<div class="error-msg">⚠ ${esc(e.message)}</div>`;
   }
 }
 
-// ══════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════
 // GOOGLE SHEETS BUDGET
-// ══════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════
 async function loadBudget() {
   document.getElementById('budget-grid').innerHTML = '<div class="loading-msg" style="grid-column:1/-1;">⏳ 載入中...</div>';
   try {
@@ -681,11 +539,7 @@ async function loadBudget() {
     if (!r.ok) throw new Error(await r.text());
     const { budgets, configured } = await r.json();
     if (!configured) {
-      document.getElementById('budget-grid').innerHTML = `
-        <div class="budget-not-configured" style="grid-column:1/-1;">
-          📊 尚未連接 Google Sheets<br>
-          <span style="font-size:10px;">在 Vercel 設定 GOOGLE_SHEETS_API_KEY 和 GOOGLE_SHEETS_SPREADSHEET_ID 後重新部署即可</span>
-        </div>`;
+      document.getElementById('budget-grid').innerHTML = `<div class="budget-not-configured" style="grid-column:1/-1;">📊 尚未連接 Google Sheets<br><span style="font-size:10px;">在 Vercel 設定 GOOGLE_SHEETS_API_KEY 和 GOOGLE_SHEETS_SPREADSHEET_ID 後重新部署</span></div>`;
       return;
     }
     if (!budgets.length) {
@@ -695,33 +549,30 @@ async function loadBudget() {
     document.getElementById('budget-grid').innerHTML = budgets.map(b => {
       const cls = b.pct > 90 ? 'over' : b.pct > 70 ? 'warn' : '';
       const vCls = b.pct > 90 ? 'over' : b.pct > 70 ? 'warn' : 'ok';
-      return `
-      <div class="budget-item">
-        <div class="budget-project-name">${escHtml(b.name)}</div>
+      return `<div class="budget-item">
+        <div class="budget-project-name">${esc(b.name)}</div>
         <div class="budget-row"><span class="budget-label">預算</span><span class="budget-value">$${b.budget.toLocaleString()}</span></div>
         <div class="budget-row"><span class="budget-label">已花費</span><span class="budget-value ${vCls}">$${b.spent.toLocaleString()}</span></div>
         <div class="budget-row"><span class="budget-label">剩餘</span><span class="budget-value ${vCls}">$${(b.budget-b.spent).toLocaleString()}</span></div>
         <div class="budget-bar"><div class="budget-bar-fill ${cls}" style="width:${b.pct}%"></div></div>
-        ${b.note?`<div class="budget-note">${escHtml(b.note)}</div>`:''}
+        ${b.note?`<div class="budget-note">${esc(b.note)}</div>`:''}
       </div>`;
     }).join('');
   } catch(e) {
-    document.getElementById('budget-grid').innerHTML = `<div class="error-msg" style="grid-column:1/-1;">⚠ ${escHtml(e.message)}</div>`;
+    document.getElementById('budget-grid').innerHTML = `<div class="error-msg" style="grid-column:1/-1;">⚠ ${esc(e.message)}</div>`;
   }
 }
 
-// ══════════════════════════════════════════════════════
-// ASANA（直接瀏覽器呼叫，CORS 支援）
-// ══════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════
+// ASANA
+// ══════════════════════════════════════════════════
 let asanaToken = localStorage.getItem('asana_token') || '';
 
 function openAsanaModal() {
   document.getElementById('asana-token-input').value = asanaToken || '';
   document.getElementById('api-modal').classList.add('open');
 }
-function closeAsanaModal() {
-  document.getElementById('api-modal').classList.remove('open');
-}
+function closeAsanaModal() { document.getElementById('api-modal').classList.remove('open'); }
 
 async function connectAsana() {
   const token = document.getElementById('asana-token-input').value.trim();
@@ -741,24 +592,19 @@ async function loadAsanaData(token) {
   token = token || asanaToken;
   if (!token) return;
 
-  // 載入中狀態
+  const H = { Authorization: `Bearer ${token}`, Accept: 'application/json' };
   document.getElementById('asana-content').innerHTML = '<div class="loading-msg">⏳ 從 Asana 載入資料...</div>';
   document.getElementById('asana-progress-list').innerHTML = '<div class="loading-msg">⏳ 載入進度條...</div>';
 
-  // Step 1: 取得 workspace
-  const meRes = await fetch('https://app.asana.com/api/1.0/users/me?opt_fields=workspaces', {
-    headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' }
-  });
+  // Step 1: workspace
+  const meRes = await fetch('https://app.asana.com/api/1.0/users/me?opt_fields=workspaces', { headers: H });
   if (!meRes.ok) throw new Error('Token 驗證失敗');
   const me = await meRes.json();
-  const workspaceGid = me.data?.workspaces?.[0]?.gid;
-  if (!workspaceGid) throw new Error('找不到 Workspace');
+  const wsGid = me.data?.workspaces?.[0]?.gid;
+  if (!wsGid) throw new Error('找不到 Workspace');
 
-  // Step 2: 取得所有專案
-  const projRes = await fetch(
-    `https://app.asana.com/api/1.0/projects?workspace=${workspaceGid}&archived=false&opt_fields=gid,name&limit=100`,
-    { headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' } }
-  );
+  // Step 2: active projects only (archived=false)
+  const projRes = await fetch(`https://app.asana.com/api/1.0/projects?workspace=${wsGid}&archived=false&opt_fields=gid,name&limit=100`, { headers: H });
   if (!projRes.ok) throw new Error('無法取得專案列表');
   const projects = (await projRes.json()).data || [];
 
@@ -768,42 +614,53 @@ async function loadAsanaData(token) {
     return;
   }
 
-  // Step 3: 並行取得各專案任務
-  const projectTasks = await Promise.all(
-    projects.map(async (proj) => {
-      try {
-        const r = await fetch(
-          `https://app.asana.com/api/1.0/projects/${proj.gid}/tasks?opt_fields=gid,name,completed,due_on,assignee.name&limit=200`,
-          { headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' } }
-        );
-        const data = r.ok ? await r.json() : { data: [] };
-        return { project: proj, tasks: data.data || [] };
-      } catch {
-        return { project: proj, tasks: [] };
-      }
-    })
-  );
+  const today = todayStr();
+  // tomorrow in local time (for search filter due_on.before)
+  const tm = new Date(); tm.setDate(tm.getDate() + 1);
+  const tomorrowStr = `${tm.getFullYear()}-${String(tm.getMonth()+1).padStart(2,'0')}-${String(tm.getDate()).padStart(2,'0')}`;
 
-  renderAsanaTasks(projectTasks);
-  renderAsanaProgress(projectTasks);
+  // Step 3: run in parallel —
+  //   (a) workspace search: overdue + today incomplete tasks in ONE call (faster than 19 calls)
+  //   (b) per-project lightweight stats for progress bar (only gid,completed fields)
+  const [searchRes, projectStats] = await Promise.all([
+    fetch(
+      `https://app.asana.com/api/1.0/workspaces/${wsGid}/tasks/search?completed=false&due_on.before=${tomorrowStr}&opt_fields=gid,name,due_on,tags.name,memberships.project.gid,memberships.project.name&limit=100`,
+      { headers: H }
+    ),
+    Promise.all(projects.map(proj =>
+      fetch(`https://app.asana.com/api/1.0/tasks?project=${proj.gid}&opt_fields=gid,completed&limit=100`, { headers: H })
+        .then(r => r.ok ? r.json().then(d => ({ project: proj, tasks: d.data || [] })) : { project: proj, tasks: [] })
+        .catch(() => ({ project: proj, tasks: [] }))
+    ))
+  ]);
+
+  const dueTasks = searchRes.ok ? ((await searchRes.json()).data || []) : [];
+  renderAsanaTasks(dueTasks, today);
+  renderAsanaProgress(projectStats);
 }
 
-function renderAsanaTasks(projectTasks) {
-  const today = todayStr();
+function renderAsanaTasks(dueTasks, today) {
+  // Workspace search already filtered completed=false & due_on.before=tomorrow
+  // Split into overdue vs due today
+  const overdue  = dueTasks.filter(t => t.due_on && t.due_on < today);
+  const dueToday = dueTasks.filter(t => t.due_on === today);
 
-  // 收集逾期 + 今日到期，各自按專案分組
-  const overdueGroups = [];
-  const todayGroups = [];
+  // Group tasks by project (using membership info from search results)
+  const groupByProject = (tasks) => {
+    const map = new Map();
+    for (const t of tasks) {
+      const proj = t.memberships?.[0]?.project || { gid: 'none', name: '未知專案' };
+      if (!map.has(proj.gid)) map.set(proj.gid, { project: proj, tasks: [] });
+      map.get(proj.gid).tasks.push(t);
+    }
+    return [...map.values()];
+  };
 
-  for (const { project, tasks } of projectTasks) {
-    const overdue  = tasks.filter(t => !t.completed && t.due_on && t.due_on < today);
-    const dueToday = tasks.filter(t => !t.completed && t.due_on === today);
-    if (overdue.length)  overdueGroups.push({ project, tasks: overdue });
-    if (dueToday.length) todayGroups.push({ project, tasks: dueToday });
-  }
+  const overdueGroups = groupByProject(overdue);
+  const todayGroups   = groupByProject(dueToday);
 
-  const totalOverdue = overdueGroups.reduce((s, g) => s + g.tasks.length, 0);
-  const totalToday   = todayGroups.reduce((s, g) => s + g.tasks.length, 0);
+  const totalOverdue = overdue.length;
+  const totalToday   = dueToday.length;
 
   document.getElementById('overdue-count').textContent = `逾期 ${totalOverdue}`;
   document.getElementById('today-asana-count').textContent = `今日 ${totalToday}`;
@@ -813,21 +670,25 @@ function renderAsanaTasks(projectTasks) {
     return;
   }
 
-  const renderGroup = (groups, sectionLabel, cls) => {
+  const taskRow = (t, cls) => {
+    const tags = (t.tags || []).map(tag => `<span class="asana-tag">${esc(tag.name)}</span>`).join('');
+    return `<div class="asana-task ${cls}">
+      <div class="status-dot dot-${cls === 'overdue' ? 'overdue' : 'today'}"></div>
+      <div class="asana-task-name">${esc(t.name)}</div>
+      ${tags ? `<div class="asana-task-tags">${tags}</div>` : ''}
+      <div class="asana-task-due due-${cls}">${t.due_on}</div>
+    </div>`;
+  };
+
+  const renderGroup = (groups, label, cls) => {
     if (!groups.length) return '';
-    return `
-      <div class="asana-section-label">${sectionLabel}</div>
-      ${groups.map(({ project, tasks }) => `
-        <div class="asana-project-group">
-          <div class="asana-proj-label">▸ ${escHtml(project.name)}</div>
-          ${tasks.map(t => `
-            <div class="asana-task ${cls}">
-              <div class="status-dot dot-${cls === 'overdue' ? 'overdue' : 'today'}"></div>
-              <div class="asana-task-name">${escHtml(t.name)}</div>
-              <div class="asana-task-assignee">${escHtml(t.assignee?.name || '未指派')}</div>
-              <div class="asana-task-due due-${cls}">${t.due_on}</div>
-            </div>`).join('')}
-        </div>`).join('')}`;
+    return `<div class="asana-section-label">${label}</div>
+      ${groups.map(({project, tasks}) =>
+        `<div class="asana-project-group">
+          <div class="asana-proj-label">▸ ${esc(project.name)}</div>
+          ${tasks.map(t => taskRow(t, cls)).join('')}
+        </div>`
+      ).join('')}`;
   };
 
   document.getElementById('asana-content').innerHTML =
@@ -837,41 +698,34 @@ function renderAsanaTasks(projectTasks) {
 
 function renderAsanaProgress(projectTasks) {
   const rows = projectTasks
-    .filter(({ tasks }) => tasks.length > 0)
-    .map(({ project, tasks }) => {
-      const total     = tasks.length;
+    .filter(({tasks}) => tasks.length > 0)
+    .map(({project, tasks}) => {
+      const total = tasks.length;
       const completed = tasks.filter(t => t.completed).length;
-      const pct       = Math.round((completed / total) * 100);
+      const pct = Math.round((completed / total) * 100);
       return { name: project.name, total, completed, pct };
     })
-    .sort((a, b) => b.pct - a.pct);
+    .sort((a,b) => b.pct - a.pct);
 
   document.getElementById('progress-count').textContent = rows.length + ' 個';
-
   if (!rows.length) {
     document.getElementById('asana-progress-list').innerHTML = '<div class="empty-msg">無任務資料</div>';
     return;
   }
-
   document.getElementById('asana-progress-list').innerHTML = rows.map(p => {
     const barCls = p.pct >= 70 ? 'high' : p.pct <= 20 ? 'low' : '';
-    return `
-    <div class="progress-item">
+    return `<div class="progress-item">
       <div class="progress-header">
-        <div class="progress-name" title="${escHtml(p.name)}">${escHtml(p.name)}</div>
+        <div class="progress-name" title="${esc(p.name)}">${esc(p.name)}</div>
         <div class="progress-pct">${p.pct}%</div>
       </div>
       <div class="progress-sub">${p.completed} / ${p.total} 已完成</div>
-      <div class="progress-bar">
-        <div class="progress-bar-fill ${barCls}" style="width:${p.pct}%"></div>
-      </div>
+      <div class="progress-bar"><div class="progress-bar-fill ${barCls}" style="width:${p.pct}%"></div></div>
     </div>`;
   }).join('');
 }
 
-// ══════════════════════════════════════════════════════
-// 初始化
-// ══════════════════════════════════════════════════════
+// ── 初始化 ────────────────────────────────────────
 loadNotionTasks();
 loadNotionProjects();
 loadBudget();
